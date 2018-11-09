@@ -1,3 +1,7 @@
 body {
   background-color: #fafafa;
 }
+
+.obj-cover {
+  object-fit: cover;
+}

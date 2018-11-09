@@ -3,7 +3,7 @@ import React from 'react'
 class Header extends React.Component {
   render() {
     return (
-      <div className="w-100 bg-white pv2 shadow-4 ph6-ns ph3 flex justify-between items-center">
+      <div className="w-100 bg-white pv2 shadow-4 ph6-ns ph3 flex justify-between items-center fixed top-0">
 
         <div className="flex justify-start items-center">
           <div className="light-red flex justify-start items-center pv2">
