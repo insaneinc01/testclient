@@ -1,3 +1,34 @@
+Idea
+ - A bare bones ecommerce website
+ - Home page with list of categories and products
+ - Click on product to see details
+ - Add to cart
+ - Cart page for review and checkout
+ - Separate admin page with authentication
+ - Add a new product or new category from the admin page
+
+Good to have
+- basic responsive for mobile or mobile first UI
+- Sorting and filters
+- Tags for products
+- Product detail page to have random generated ratings and reviews
+- Featured products section?
+
+
+Design decisions
+- Quick and dirty - so tachyons css (styled components might be overkill)
+- Apollo client for all data in the App
+- Redux - not really needed for such a simple app.. but add anyway
+- JWT authentication - save token in localStorage (needed for admin role, but user accounts is another beast)
+- social login - NO! FB only works with https, so no use. gmail still works from localhost
+
+
+
+- register serviceworker in index.js towards the end
+
+
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
