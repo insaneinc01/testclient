@@ -9,6 +9,7 @@ const GET_PRODUCTS = gql`{
     name
     price
     category
+    image
   }
 }`
 
@@ -18,8 +19,8 @@ class Products extends React.Component {
       <div className="w-100 pt4 flex flex-wrap justify-start items-center">
         <Query query={GET_PRODUCTS}>
           {({ loading, error, data }) => {
-            if (loading) return <p>Loading...</p>;
-            if (error) return <p>Error :(</p>;
+            if (loading) return <p className="gray tc w-100">Loading...</p>
+            if (error) return <p className="gray tc w-100">Error from the server. Try refreshing the page</p>
 
             return data.products.map((product) => (
               <ProductTile key={product._id} product={product}/>

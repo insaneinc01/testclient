@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from "react-router-dom"
 
 class Header extends React.Component {
   render() {
@@ -6,10 +7,10 @@ class Header extends React.Component {
       <div className="w-100 bg-white pv2 shadow-4 ph6-ns ph3 flex justify-between items-center fixed top-0">
 
         <div className="flex justify-start items-center">
-          <div className="light-red flex justify-start items-center pv2">
+          <Link className="light-red flex justify-start items-center pv2" to="/">
             <ion-icon name="infinite" size="large"></ion-icon>
             <h4 className="tracked mv0"><span className="fw4">THE</span>STORE</h4>
-          </div>
+          </Link>
 
           <p className="f7 pl4">FEATURED</p>
           <p className="f7 pl4">CATEGORIES</p>

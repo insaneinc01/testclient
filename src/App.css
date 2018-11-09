@@ -5,3 +5,8 @@ body {
 .obj-cover {
   object-fit: cover;
 }
+
+a {
+  text-decoration: none !important;
+  outline: none !important;
+}
