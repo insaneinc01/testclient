@@ -16,17 +16,19 @@ const GET_PRODUCTS = gql`{
 class Products extends React.Component {
   render() {
     return (
-      <div className="w-100 pt4 flex flex-wrap justify-start items-center">
-        <Query query={GET_PRODUCTS}>
-          {({ loading, error, data }) => {
-            if (loading) return <p className="gray tc w-100">Loading...</p>
-            if (error) return <p className="gray tc w-100">Error from the server. Try refreshing the page</p>
+      <div className="w-100 pt4">
+        <div className="flex flex-wrap justify-center items-center">
+          <Query query={GET_PRODUCTS}>
+            {({ loading, error, data }) => {
+              if (loading) return <p className="gray tc w-100">Loading...</p>
+              if (error) return <p className="gray tc w-100">Error from the server. Try refreshing the page</p>
 
-            return data.products.map((product) => (
-              <ProductTile key={product._id} product={product}/>
-            ));
-          }}
-        </Query>
+              return data.products.map((product) => (
+                <ProductTile key={product._id} product={product}/>
+              ));
+            }}
+          </Query>
+        </div>
       </div>
       )
     }
