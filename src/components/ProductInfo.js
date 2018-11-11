@@ -1,23 +1,29 @@
 import React from 'react'
-import { Query } from "react-apollo"
+import { Query, Mutation } from "react-apollo"
 import gql from "graphql-tag"
 
 const GET_PRODUCT = gql`
-  query Product($_id: String) {
-    product(_id: $_id) {
-      _id
-      name
-      price
-      category
-      image
-      headline
-      description
-      tags
-      rating
-      featured
-      instock
-      inventory
-    }
+query Product($_id: String) {
+  product(_id: $_id) {
+    _id
+    name
+    price
+    category
+    image
+    headline
+    description
+    tags
+    rating
+    featured
+    instock
+    inventory
+  }
+}
+`
+
+const ADD_TO_CART = gql`
+  mutation addToCart($_id: String) {
+    addToCart(_id: $_id) @client
   }
 `
 
@@ -30,7 +36,7 @@ const ProductInfo = ({match}) => {
           if (loading) return <p className="gray tc">Loading...</p>;
           if (error) return <p className="gray tc">Error from the server. Try refreshing the page</p>;
 
-          const { image, name, price, headline, description, category, tags, rating } = data.product
+          const { _id, image, name, price, headline, description, category, tags, rating } = data.product
 
           return (
             <div className="w-100 db">
@@ -55,14 +61,16 @@ const ProductInfo = ({match}) => {
                 <p className="mid-gray f5 mt4">{headline}</p>
                 <p className="mid-gray f6 ">{description}</p>
 
-                <button className="f7 fw6 button-reset bg-light-red pv2 ph3 white mt3 bw0 pointer dim">ADD TO CART</button>
+                <Mutation mutation={ADD_TO_CART} variables={{_id}}>
+                  {addToCart => <button className="f7 fw6 button-reset bg-light-red pv2 ph3 white mt3 bw0 pointer dim" onClick={addToCart}>ADD TO CART</button>}
+                </Mutation>
               </div>
             </div>
           )
         }}
       </Query>
     </div>
-    )
-  }
+  )
+}
 
-  export default ProductInfo
+export default ProductInfo

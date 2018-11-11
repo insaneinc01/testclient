@@ -1,5 +1,16 @@
 import React from 'react'
 import { Link } from "react-router-dom"
+import { Query } from 'react-apollo'
+import gql from "graphql-tag"
+
+const CART = gql`
+  {
+    cart @client {
+      _id
+      quantity
+    }
+  }
+`
 
 class Header extends React.Component {
   render() {
@@ -19,9 +30,16 @@ class Header extends React.Component {
 
         <div className="flex justify-start items-center">
           <p className="f7 pr4">SIGN IN</p>
-          <div className="w2 h2 br-100 bg-light-red flex justify-center items-center white">
-            <ion-icon name="cart" size="small"></ion-icon>
-          </div>
+          <Query query={CART}>
+            {({ data }) => (
+              <div className="w2 h2 br-100 bg-light-red flex justify-center items-center white relative">
+                <ion-icon name="cart" size="small"></ion-icon>
+                {data.cart.length ? <div className="absolute bg-yellow br-100 flex justify-center items-center" style={{height:'20px',width:'20px',top:'-0.4rem',right:'-0.4rem'}}>
+                  <p className="black fw6 f7 mv0">{data.cart.length}</p>
+                </div> : null}
+              </div>
+            )}
+          </Query>
         </div>
 
       </div>

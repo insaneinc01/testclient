@@ -22,7 +22,8 @@ Design decisions
 - JWT authentication - save token in localStorage (needed for admin role, but user accounts is another beast)
 - social login - NO! FB only works with https, so no use. gmail still works from localhost
 
-
+- Ok I'm beginning to realise that Redux makes things trickier with Apollo client 2. In fact Apollo client 2 is *supposed* to replace Redux and apollo cache the single source of truth. Moral of the story: apollo-link-state -> Redux Killer!
+Some insights here - https://www.jaygould.co.uk/dev/2018/03/04/preact-jwt-redux-apollo-part3.html
 
 - register serviceworker in index.js towards the end
 
