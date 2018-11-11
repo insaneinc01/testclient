@@ -6,6 +6,7 @@ import Products from './components/Products'
 import ProductInfo from './components/ProductInfo'
 import Admin from './components/Admin'
 import AdminLogin from './components/AdminLogin'
+import Cart from './components/Cart'
 import { ApolloProvider } from "react-apollo"
 // import ApolloClient from "apollo-boost";
 import { BrowserRouter as Router, Route } from "react-router-dom"
@@ -114,6 +115,7 @@ class App extends Component {
               <Route path="/productdetail/:_id" exact component={ProductInfo}/>
               <Route path="/admin" exact component={Admin}/>
               <Route path="/admin/login" exact component={AdminLogin}/>
+              <Route path="/cart" exact component={Cart}/>
             </div>
 
           </div>
