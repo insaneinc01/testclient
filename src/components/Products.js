@@ -21,7 +21,7 @@ class Products extends React.Component {
           <Query query={GET_PRODUCTS}>
             {({ loading, error, data }) => {
               if (loading) return <p className="gray tc w-100">Loading...</p>
-              if (error) return <p className="gray tc w-100">Error from the server. Try refreshing the page</p>
+              if (error) return <p className="gray tc w-100">Server error. Please refresh the page and try again</p>
 
               return data.products.map((product) => (
                 <ProductTile key={product._id} product={product}/>

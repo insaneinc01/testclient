@@ -42,8 +42,7 @@ class AdminLogin extends React.Component {
             <div className="pt4 w-100 flex justify-center items-center">
               <form className="bg-white pa5 shadow-4 tc br1" onSubmit={async e => {
                 e.preventDefault()
-                let {data: {login}} = await triggerLogin({variables: {username, password}})
-                console.log(login);
+                const {data: {login}} = await triggerLogin({variables: {username, password}})
                 if (login.token) {
                   localStorage.setItem("TestApp.token", login.token)
                   this.props.history.push("/admin")
