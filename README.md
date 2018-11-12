@@ -1,4 +1,4 @@
-#HOW TO RUN
+# HOW TO RUN
 
 - git clone https://github.com/insaneinc01/testclient.git
 - cd testclient
@@ -6,7 +6,7 @@
 - npm start
 Please ensure the server is running at http://localhost:4000
 
-#Admin credentials
+# Admin credentials
 username: *admin*
 password: *admin101*
 
