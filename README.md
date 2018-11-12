@@ -1,3 +1,13 @@
+HOW TO RUN
+
+- git clone https://github.com/insaneinc01/testclient.git
+- cd testclient
+- npm install
+- npm start
+Please ensure the server is running at http://localhost:4000
+
+
+
 Idea
  - A bare bones ecommerce website
  - Home page with list of categories and products
