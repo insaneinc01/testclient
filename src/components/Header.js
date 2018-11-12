@@ -6,7 +6,7 @@ import { CART } from '../graphql/queries'
 class Header extends React.Component {
 
   logout = () => {
-    localStorage.removeItem("TestApp.token")
+    localStorage.removeItem("TestApp.token") //dumb way of deleting token, without server side handling
     this.props.history.push("/")
   }
 

@@ -9,6 +9,7 @@ import typeDefs from './typeDefs'
 
 const httpLink = createHttpLink({ uri: 'http://localhost:4000/graphql' });
 
+//this is to the jwt token on each server call - to authorise admin permission in this app
 const authLink = setContext((_, { headers }) => {
   const token = localStorage.getItem("TestApp.token");
   return {
@@ -19,17 +20,19 @@ const authLink = setContext((_, { headers }) => {
   }
 });
 
+// setup Apollo cache managed local state instead of Redux!
 const defaults = {
   cart: [],
 }
 const cache = new InMemoryCache()
 const stateLink = withClientState({
   cache,
-  defaults,
-  resolvers,
-  typeDefs
+  defaults, //default state
+  resolvers, //graphql-like mutation for updating local state
+  typeDefs //graphql-like definitions for state management
 })
 
+//finally composing localstate, authorization and graphql endpoint into a single chain
 export const apolloClient = new ApolloClient({
   link: ApolloLink.from([stateLink, authLink.concat(httpLink)]),
   cache

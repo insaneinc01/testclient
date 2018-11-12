@@ -19,7 +19,7 @@ class AdminLogin extends React.Component {
     console.log(e);
     e.preventDefault()
     const {username, password} = this.state
-    localStorage.setItem("TestApp.token", username + password)
+    localStorage.setItem("TestApp.token", username + password) //save token in localStorage for all further calls
     this.props.history.push("/admin")
   }
 

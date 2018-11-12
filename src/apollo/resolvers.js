@@ -1,17 +1,9 @@
-import gql from 'graphql-tag'
+import { CART } from '../graphql/queries'
 
 const resolvers = {
   Mutation: {
     addToCart: (_, {_id}, {cache, getCacheKey}) => {
-      const query = gql`
-      {
-        cart @client {
-          _id
-          quantity
-        }
-      }
-      `
-      const previous = cache.readQuery({ query })
+      const previous = cache.readQuery({ query: CART })
       const ids = previous.cart.map(({_id}) => _id)
 
       if (ids.includes(_id)) {

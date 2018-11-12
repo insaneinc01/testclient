@@ -2,6 +2,8 @@ import React from 'react'
 import { Query } from "react-apollo"
 import { PRODUCTS_BY_ID, CART } from '../graphql/queries'
 
+// Fetch items in cart from local state and then call server for product data
+
 const Cart = () => {
   return (
     <div className="pt4 w-100 mw7 db center mid-gray">
