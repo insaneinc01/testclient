@@ -1,17 +1,7 @@
 import React from 'react'
 import { Query } from "react-apollo"
-import gql from "graphql-tag"
 import ProductTile from './ProductTile'
-
-const GET_PRODUCTS = gql`{
-  products {
-    _id
-    name
-    price
-    category
-    image
-  }
-}`
+import { GET_PRODUCTS } from '../graphql/queries'
 
 class Products extends React.Component {
   render() {

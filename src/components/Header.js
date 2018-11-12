@@ -1,16 +1,7 @@
 import React from 'react'
 import { Link } from "react-router-dom"
 import { Query } from 'react-apollo'
-import gql from "graphql-tag"
-
-const CART = gql`
-  {
-    cart @client {
-      _id
-      quantity
-    }
-  }
-`
+import { CART } from '../graphql/queries'
 
 class Header extends React.Component {
   render() {

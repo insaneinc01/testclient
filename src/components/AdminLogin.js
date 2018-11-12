@@ -1,16 +1,6 @@
 import React from 'react'
-import gql from 'graphql-tag'
 import { Mutation } from 'react-apollo'
-
-const LOGIN = gql`
-mutation Login($username: String, $password: String) {
-  login(username: $username, password: $password) {
-    username
-    _id
-    token
-  }
-}
-`
+import { LOGIN } from '../graphql/mutations'
 
 
 class AdminLogin extends React.Component {

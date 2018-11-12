@@ -1,31 +1,7 @@
 import React from 'react'
 import { Query, Mutation } from "react-apollo"
-import gql from "graphql-tag"
-
-const GET_PRODUCT = gql`
-query Product($_id: String) {
-  product(_id: $_id) {
-    _id
-    name
-    price
-    category
-    image
-    headline
-    description
-    tags
-    rating
-    featured
-    instock
-    inventory
-  }
-}
-`
-
-const ADD_TO_CART = gql`
-  mutation addToCart($_id: String) {
-    addToCart(_id: $_id) @client
-  }
-`
+import { GET_PRODUCT } from '../graphql/queries'
+import { ADD_TO_CART } from '../graphql/mutations'
 
 const ProductInfo = ({match}) => {
   return (

@@ -1,26 +1,6 @@
 import React from 'react'
 import { Query } from "react-apollo"
-import gql from "graphql-tag"
-
-const PRODUCTS_BY_ID = gql`
-query ProductsById($ids: [String]) {
-  productsById(ids: $ids) {
-    _id
-    name
-    price
-    image
-    headline
-  }
-}
-`
-const CART = gql`
-  {
-    cart @client {
-      _id
-      quantity
-    }
-  }
-`
+import { PRODUCTS_BY_ID, CART } from '../graphql/queries'
 
 const Cart = () => {
   return (
@@ -40,7 +20,7 @@ const Cart = () => {
                   {productsById.map((product, i) => {
                     const { _id, image, name, price, headline } = product
                     return (
-                      <div className="pr3 bg-white w-100 flex justify-between items-center bb b--black-05" key={_id}>
+                      <div className="mt1 pr3 bg-white w-100 flex justify-between items-center bb b--black-05" key={_id}>
                         <div className="w-60 dib v-top flex justify-start items-center">
                           <div className="bg-washed-red w3 h3">
                             <img className="w-100 h-100 obj-cover" src={image ? `https://picsum.photos/500/400?image=${image.split("image=")[1]}` : ""} alt=""/>
