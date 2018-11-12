@@ -20,7 +20,7 @@ class App extends React.Component {
 
         <Router>
           <div className="sans-serif dark-gray">
-            <Header/>
+            <Route path="/" component={Header}/>
 
             <div className="ph6-ns ph3 pt5">
               <Route path="/" exact component={Products}/>

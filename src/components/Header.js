@@ -4,6 +4,12 @@ import { Query } from 'react-apollo'
 import { CART } from '../graphql/queries'
 
 class Header extends React.Component {
+
+  logout = () => {
+    localStorage.removeItem("TestApp.token")
+    this.props.history.push("/")
+  }
+
   render() {
     return (
       <div className="w-100 bg-white pv2 shadow-4 ph6-ns ph3 flex justify-between items-center fixed top-0">
@@ -20,7 +26,13 @@ class Header extends React.Component {
         </div>
 
         <div className="flex justify-start items-center">
-          <p className="f7 pr4">SIGN IN</p>
+
+          {this.props.location.pathname === "/admin" ? (
+            <div onClick={this.logout} className="pointer"><p className="f7 pr4">LOGOUT</p></div>
+          ) : (
+            <Link to="/admin" className="pointer"><p className="f7 pr4">ADMIN</p></Link>
+          )}
+
           <Query query={CART}>
             {({ data }) => (
               <Link to="/cart" className="w2 h2 br-100 bg-light-red flex justify-center items-center white relative">

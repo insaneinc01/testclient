@@ -56,10 +56,14 @@ class Admin extends React.Component {
               <form className="w-60 dib v-top gray" onSubmit={async e => {
                 e.preventDefault()
 
+                const numberCheck = new RegExp(/^-?\d+\.?\d*$/)
+
                 if (!name) { this.setState({errMsg: "Name field is required"}); return false; }
                 if (!price) { this.setState({errMsg: "Price field is required"}); return false; }
+                if (!numberCheck.test(price)) { this.setState({errMsg: "Price field should be a number"}); return false; }
                 if (!category) { this.setState({errMsg: "Category field is required"}); return false; }
                 if (!image) { this.setState({errMsg: "An Image is required"}); return false; }
+                if (inventory && !numberCheck.test(inventory)) { this.setState({errMsg: "Available stock should be a number"}); return false; }
 
                 const {data: {createProduct}} = await triggerCreateProduct({
                   variables: {name, price: Number(price), category, image, tags, headline, inventory: Number(inventory), featured: Boolean(featured), instock: Boolean(instock), description}
@@ -100,7 +104,7 @@ class Admin extends React.Component {
                   <input name="headline" value={headline} onChange={this.onChange} className="w-75 reset-input ba b--black-10 pa2"/>
                 </div>
                 <div className="w-100 flex justify-between items-center">
-                  <p className="w-25">Inventory</p>
+                  <p className="w-25">Available</p>
                   <input name="inventory" value={inventory} onChange={this.onChange} className="w-75 reset-input ba b--black-10 pa2"/>
                 </div>
                 <div className="w-100 flex justify-between items-center">
